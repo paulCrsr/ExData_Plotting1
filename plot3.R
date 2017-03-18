@@ -5,7 +5,7 @@ png("plot3.png",
         height = 480)
 
 with(household, {
-        plot(householdDateTime(Date, Time), 
+        plot(DateTime, 
              Sub_metering_1,
              type = "l",
              col = "black",

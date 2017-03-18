@@ -5,7 +5,7 @@ png("plot2.png",
         height = 480)
 
 with(household, 
-        plot(householdDateTime(Date, Time), 
+        plot(DateTime, 
              Global_active_power,
              type = "l",
              col = "black",

@@ -24,6 +24,10 @@ if (!file.exists(rawDataFile)) {
         unzip(downloadZipFile, exdir=dirs$download)
         message("... download complete!")
 }
+################## Shared functions ##################
+
+# Creates a datetime from date `d` and time `t` so that values can be plotted.
+combineDateTime <- function(d, t) ymd_hms(paste(ymd(d), paste(hour(t), minute(t), second(t), sep = ":")))
 
 ################## Ingest ##################
 
@@ -54,8 +58,8 @@ ingest <- function() {
                            blank.lines.skip = TRUE,
                            nrows = 2100000
                 )
-        message("... ", " filtering by date...")
-        filtered <- with(alldata, subset(alldata, Date == ymd("2007/02/01") | Date == ymd("2007/02/02")))
+        filtered <- with(alldata, subset(alldata, Date %in% c(dmy("01/02/2007"), dmy("02/02/2007"))))
+        filtered$DateTime <- with(filtered, combineDateTime(Date, Time))
         message("...", " complete!")
         filtered
 } 
@@ -67,8 +71,3 @@ if (exists("household")) {
 }
 
 message("Done! Variable `household` exists with: ", ncol(household), " cols, ", nrow(household), " rows")
-
-################## Shared functions ##################
-
-# Creates a datetime from date `d` and time `t` so that values can be plotted.
-householdDateTime <- function(d, t) ymd_hms(paste(ymd(d), paste(hour(t), minute(t), second(t), sep = ":")))

@@ -8,7 +8,7 @@ par(mfrow = c(2, 2))  # Setup 2 x 2, row-major, multi-frame
 
 # Top-Left: Plot 2 again
 with(household, 
-     plot(householdDateTime(Date, Time), 
+     plot(DateTime, 
           Global_active_power,
           type = "l",
           col = "black",
@@ -19,7 +19,7 @@ with(household,
 
 # Top-Right:
 with(household, 
-     plot(householdDateTime(Date, Time), 
+     plot(DateTime, 
           Voltage,
           type = "l",
           col = "black",
@@ -30,7 +30,7 @@ with(household,
 
 # Bottom-Left: Plot 3 again
 with(household, {
-        plot(householdDateTime(Date, Time), 
+        plot(DateTime, 
              Sub_metering_1,
              type = "l",
              col = "black",
@@ -51,7 +51,7 @@ with(household, {
 
 # Bottom-Right
 with(household, 
-     plot(householdDateTime(Date, Time), 
+     plot(DateTime, 
           Global_reactive_power,
           type = "l",
           col = "black",
