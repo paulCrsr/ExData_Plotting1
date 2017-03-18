@@ -1,13 +1,12 @@
 source("ingestData.R")
 
-png("plot4.png",
-        width = 480,
-        height = 480)
+png("plot4.png", width = 480, height = 480)
 
 par(mfrow = c(2, 2))  # Setup 2 x 2, row-major, multi-frame
 
-# Top-Left: Plot 2 again
-with(household, 
+with(household, {
+     
+    # Top-Left: Plot 2 again
      plot(DateTime, 
           Global_active_power,
           type = "l",
@@ -15,10 +14,8 @@ with(household,
           ylab = "Global Active Power",
           xlab = ""
      )
-)
 
-# Top-Right:
-with(household, 
+     # Top-Right:
      plot(DateTime, 
           Voltage,
           type = "l",
@@ -26,10 +23,8 @@ with(household,
           ylab = "Voltage",
           xlab = "datetime"
      )
-)
 
-# Bottom-Left: Plot 3 again
-with(household, {
+     # Bottom-Left: Plot 3 again
         plot(DateTime, 
              Sub_metering_1,
              type = "l",
@@ -47,16 +42,15 @@ with(household, {
                col = c("black", "red", "blue"),
                bty = "n" # No border
         )
-})
 
-# Bottom-Right
-with(household, 
+     # Bottom-Right
      plot(DateTime, 
           Global_reactive_power,
           type = "l",
           col = "black",
           xlab = "datetime"
      )
-)
+     
+})
 
 dev.off()
