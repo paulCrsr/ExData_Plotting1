@@ -3,6 +3,7 @@
 # 2. Reads the unzipped, raw data. 
 #    Data size: 20MBcompressed, 127MB uncompressed, ~2million rows x 9 cols. Would require ~254MB in memory.
 # 3. Tidys the data keeping only data from 2007-02-01 and 2007-02-02 and stores the output in a variable `household`.
+# 4. Provides shared functions.
 
 library("downloader")   # For downloading and extracting the zip file.
 library("lubridate")    # For convenient date handling.
@@ -66,3 +67,8 @@ if (exists("household")) {
 }
 
 message("Done! Variable `household` exists with: ", ncol(household), " cols, ", nrow(household), " rows")
+
+################## Shared functions ##################
+
+# Creates a datetime from date `d` and time `t` so that values can be plotted.
+householdDateTime <- function(d, t) ymd_hms(paste(ymd(d), paste(hour(t), minute(t), second(t), sep = ":")))
