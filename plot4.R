@@ -4,7 +4,7 @@ png("plot4.png",
         width = 480,
         height = 480)
 
-par(mfrow = c(2, 2))  # Setup 2 x 2 row-major, multi-frame
+par(mfrow = c(2, 2))  # Setup 2 x 2, row-major, multi-frame
 
 # Top-Left: Plot 2 again
 with(household, 
@@ -48,7 +48,6 @@ with(household, {
                bty = "n" # No border
         )
 })
-
 
 # Bottom-Right
 with(household, 
